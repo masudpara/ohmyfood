@@ -9,3 +9,16 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+
+@media (max-width: 1000px) {
+    main {
+      padding: 0 1rem;
+    }
+  }
+
+
+h2 {
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+}

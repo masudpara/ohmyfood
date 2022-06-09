@@ -1,0 +1,12 @@
+.menus {
+    background-color: #f6f6f6;
+    
+    & .card {
+      border: 1px solid black;
+      height: 4rem;
+    }
+    
+    & .card .menus__cards {
+      display: flex;
+    }
+  }
