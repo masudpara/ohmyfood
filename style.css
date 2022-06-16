@@ -9,17 +9,20 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-@media (max-width: 1000px) {
-  main {
-    padding: 0 1rem;
-  }
+h2, h3, p {
+  margin: 0;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 header {
   font-family: "Shrikhand", cursive;
   text-align: center;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
-  padding: 1rem;
-  margin: 0;
+  padding: 0.3rem;
   position: relative;
 }
 
@@ -48,11 +51,11 @@ header {
   margin: 1rem;
 }
 .explorer p {
-  font-weight: 300;
+  font-size: 1rem;
 }
 .explorer button {
   color: white;
-  font-weight: 600;
+  font-weight: 300;
   font-size: 1.5rem;
   padding: 1rem 2rem;
   border: none;
@@ -69,15 +72,50 @@ header {
   opacity: 0.9;
 }
 
+.loader {
+  position: fixed;
+  display: grid;
+  place-items: center;
+  background-color: #ffffff;
+  height: 100vh;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.9;
+  animation: disappear 200ms 3s forwards;
+  transform-origin: top;
+}
+.loader::after {
+  content: "";
+  height: 100px;
+  width: 100px;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #9356dc;
+  border-radius: 50%;
+  animation: spin 1s ease-in-out;
+  animation-iteration-count: 3;
+}
+
+@keyframes disappear {
+  to {
+    transform: scale(0);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 .tuto {
   counter-reset: steps;
-  margin-bottom: 2rem;
+}
+.tuto h2 {
+  padding: 2rem 1rem;
 }
 .tuto ol {
   display: flex;
   gap: 2rem;
 }
-@media (max-width: 1000px) {
+@media (max-width: 1024px) {
   .tuto ol {
     flex-direction: column;
   }
@@ -91,6 +129,7 @@ header {
   padding: 1.5rem 2rem;
   flex-grow: 1;
   border-radius: 1rem;
+  box-shadow: 2px 1px 8px -3px #7e7e7e;
 }
 .tuto li::before {
   content: counter(steps);
@@ -111,6 +150,9 @@ header {
   transform: scale(1.02);
   background-color: #f2eafb;
 }
+.tuto li:hover i::before {
+  color: #9356dc;
+}
 .tuto li i.fas {
   margin-right: 1rem;
   color: #7e7e7e;
@@ -120,17 +162,19 @@ header {
 .menus {
   background-color: #f6f6f6;
 }
-.menus h1 {
-  margin-bottom: 2rem;
+.menus h2 {
+  padding: 2rem 1rem;
 }
 .menus .menus__cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+  margin: 1rem;
+  padding-bottom: 3rem;
 }
-@media (max-width: 1000px) {
+@media (max-width: 1024px) {
   .menus .menus__cards {
-    grid-template-columns: repeat(1n 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 .menus .menus__cards .new {
@@ -139,10 +183,10 @@ header {
 .menus .menus__cards .new::before {
   content: "Nouveau";
   position: absolute;
-  height: 3rem;
+  height: 2rem;
   width: 5rem;
   background-color: #99e2d0;
-  color: darken #99e2d0, 50%;
+  color: #1b6150;
   display: grid;
   place-items: center;
   right: 1rem;
@@ -150,8 +194,9 @@ header {
 }
 .menus .card__image {
   height: 15rem;
-  border-radius: 1rem;
+  border-radius: 1rem 1rem 0 0;
   background-size: cover;
+  background-position: center;
 }
 .menus .card__image-1 {
   background-image: url("images/menu-1.jpg");
@@ -167,19 +212,56 @@ header {
 }
 .menus .card__description {
   position: relative;
+  background-color: white;
+  border-radius: 0 0 1rem 1rem;
 }
-.menus .card__description h3, .menus .card__description p {
-  margin: 0.5rem;
-}
-.menus .card__description h3 {
-  padding-top: 0.5rem;
-}
-.menus .card__description i {
-  font-size: 2rem;
+.menus .card__description::before {
+  display: inline-block;
   position: absolute;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  content: "\f004";
+  font-size: 2rem;
   right: 1rem;
   top: 50%;
   transform: translateY(-50%);
+  color: inherit;
+  background-clip: text;
+  -webkit-background-clip: text;
+  opacity: 1;
+  transition: all 200ms ease-in-out;
+}
+.menus .card__description::after {
+  display: inline-block;
+  position: absolute;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f004";
+  font-size: 2rem;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  opacity: 0;
+  transition: all 200ms ease-in-out;
+  background-image: linear-gradient(to top, rgb(147, 86, 220), rgb(255, 121, 218));
+}
+.menus .card__description:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+.menus .card__description h3, .menus .card__description p {
+  padding: 0.5rem;
 }
 
 footer {
@@ -194,6 +276,82 @@ footer h2 {
 }
 footer p {
   padding: 0.2rem;
+}
+
+.banner img {
+  display: block;
+  width: 100%;
+  height: 70vh;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+.resto__main {
+  margin-top: -2rem;
+  position: relative;
+  background: #f6f6f6;
+  border-radius: 2rem 2rem 0 0;
+}
+.resto__main h2 {
+  font-family: "Shrikhand", cursive;
+  padding: 2rem 1rem;
+}
+.resto__main::before {
+  display: inline-block;
+  position: absolute;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  content: "\f004";
+  font-size: 2rem;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: inherit;
+  background-clip: text;
+  -webkit-background-clip: text;
+  opacity: 1;
+  transition: all 200ms ease-in-out;
+}
+.resto__main::after {
+  display: inline-block;
+  position: absolute;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  content: "\f004";
+  font-size: 2rem;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: inherit;
+  background-clip: text;
+  -webkit-background-clip: text;
+  opacity: 1;
+  transition: all 200ms ease-in-out;
+  background-image: linear-gradient(to top, rgb(147, 86, 220), rgb(255, 121, 218));
+  opacity: 0;
+  color: transparent;
+  font-weight: 900;
+}
+.resto__main:hover::after {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.menu-grid {
+  display: grid;
+  background: yellow;
+  grid-template-columns: repeat(3, 1fr);
+}
+.menu-grid > * {
+  border: 1px solid red;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,44 @@
+@use "../utils/mixins";
+
+
+.banner img {
+    display: block;
+    width: 100%;
+    height: 70vh;
+    object-fit: cover;
+    object-position: center bottom;
+}
+
+.resto__main {
+    margin-top: -2rem;
+    position: relative;
+    background: #f6f6f6;
+    border-radius: 2rem 2rem 0 0;
+    h2 {
+        font-family: "Shrikhand", cursive;
+        padding: 2rem 1rem;
+    }
+    &::before {
+        @include mixins.heart;
+    }
+    &::after {
+        @include mixins.heart;
+        @include mixins.gradient(1);
+        opacity: 0;
+        color: transparent;
+        font-weight: 900;
+    }
+    &:hover::after {
+        opacity: 1;
+        transform: translateY(-50%) scale(1.1);
+    }
+}
+
+.menu-grid {
+    display: grid;
+    background: yellow;
+    grid-template-columns: repeat(3, 1fr);
+    & > * {
+        border: 1px solid red;
+    }
+}
