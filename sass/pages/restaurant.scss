@@ -1,4 +1,8 @@
 @use "../utils/mixins";
+@use "../utils/variables";
+@use "../utils/colors";
+@use "../utils/animations";
+
 
 
 .banner img {
@@ -9,36 +13,90 @@
     object-position: center bottom;
 }
 
-.resto__main {
+.resto__title {
     margin-top: -2rem;
     position: relative;
-    background: #f6f6f6;
+    background: colors.$lightergrey;
     border-radius: 2rem 2rem 0 0;
     h2 {
         font-family: "Shrikhand", cursive;
         padding: 2rem 1rem;
     }
     &::before {
-        @include mixins.heart;
-    }
-    &::after {
-        @include mixins.heart;
-        @include mixins.gradient(1);
-        opacity: 0;
-        color: transparent;
-        font-weight: 900;
-    }
-    &:hover::after {
-        opacity: 1;
-        transform: translateY(-50%) scale(1.1);
+        @include mixins.heart-animated;
     }
 }
 
-.menu-grid {
-    display: grid;
-    background: yellow;
-    grid-template-columns: repeat(3, 1fr);
-    & > * {
-        border: 1px solid red;
-    }
+.resto-main {
+  padding: 0 1rem;
+  background-color: colors.$lightergrey;
+  h3 {
+    margin-bottom: 1rem;
+  }
 }
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  @media (max-width: variables.$breakpoint) {
+    grid-template-columns: 1fr;
+  }
+  .menu__category {
+    overflow: hidden;
+    .menu-item {
+      display: flex;
+      background-color: white;
+      border-radius: 1rem;
+      overflow: hidden;
+      margin: 0.5rem;
+      @include mixins.box-shadow;
+      .menu-item__price {
+        margin-left: auto;
+        padding: 1rem;
+        font-weight: 900;
+        display: flex;
+        align-items: flex-end;
+      }
+      .menu-item__description {
+        padding: 1rem;
+        overflow: hidden;
+        h4, p {
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+      .menu-item__check {
+        display: grid;
+        flex-shrink: 0;
+        place-items: center;
+        $button-width: 4rem;
+        border-radius: 0 1rem 1rem 0;
+        background-color: colors.$color-tertiary;
+        margin-right: -$button-width;
+        width: $button-width;
+        transition: margin-right 0.5s;
+        i {
+          display: grid;
+          place-items: center;
+          background: white;
+          aspect-ratio: 1;
+          width: 2rem;
+          border-radius: 1rem;
+          color: colors.$color-tertiary;
+        }
+      }
+      &:hover {
+        .menu-item__check {
+          margin-right: 0;
+        }
+        i {
+          @include animations.quarterspin;
+          animation: quarterspin 0.4s ease-in-out;
+        }
+      }
+    }
+  }
+}
+

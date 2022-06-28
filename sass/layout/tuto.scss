@@ -10,6 +10,7 @@
   & ol {
     display: flex;
     gap: 2rem;
+    margin-right: 1rem;
     @media (max-width: variables.$breakpoint) {
       flex-direction: column;
     }
