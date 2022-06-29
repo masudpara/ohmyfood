@@ -4,8 +4,18 @@
 @use "../utils/animations";
 
 
+#page-resto {
+  header::before {
+    @include mixins.font-awesome (900);
+    content: "\f060";
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+    padding: 1.5rem;
+  }
 
-.banner img {
+  .banner img {
     display: block;
     width: 100%;
     height: 70vh;
@@ -32,6 +42,18 @@
   background-color: colors.$lightergrey;
   h3 {
     margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 1.7rem;
+      left: 0;
+      height: 0.25rem;
+      width:3rem;
+      background-color: colors.$color-tertiary;
+    }
   }
 }
 
@@ -42,6 +64,7 @@
   @media (max-width: variables.$breakpoint) {
     grid-template-columns: 1fr;
   }
+  
   .menu__category {
     overflow: hidden;
     .menu-item {
@@ -51,6 +74,7 @@
       overflow: hidden;
       margin: 0.5rem;
       @include mixins.box-shadow;
+      animation: appear 3s;
       .menu-item__price {
         margin-left: auto;
         padding: 1rem;
@@ -88,6 +112,7 @@
         }
       }
       &:hover {
+        cursor: pointer;
         .menu-item__check {
           margin-right: 0;
         }
@@ -100,3 +125,14 @@
   }
 }
 
+section.order {
+  height: 25vh;
+  display: grid;
+  place-items: center;
+  button {
+    @include mixins.base-button;
+  }
+}
+
+
+}

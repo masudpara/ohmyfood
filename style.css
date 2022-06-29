@@ -294,30 +294,45 @@ footer p {
     opacity: 1;
   }
 }
-.banner img {
+#page-resto header::before {
+  display: inline-block;
+  position: absolute;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f060";
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  padding: 1.5rem;
+}
+#page-resto .banner img {
   display: block;
   width: 100%;
   height: 70vh;
   object-fit: cover;
   object-position: center bottom;
 }
-
-.resto__title {
+#page-resto .resto__title {
   margin-top: -2rem;
   position: relative;
   background: #f6f6f6;
   border-radius: 2rem 2rem 0 0;
 }
-.resto__title h2 {
+#page-resto .resto__title h2 {
   font-family: "Shrikhand", cursive;
   padding: 2rem 1rem;
 }
-.resto__title::before {
+#page-resto .resto__title::before {
   position: relative;
   background-color: white;
   border-radius: 0 0 1rem 1rem;
 }
-.resto__title::before::before {
+#page-resto .resto__title::before::before {
   display: inline-block;
   position: absolute;
   font-style: normal;
@@ -337,7 +352,7 @@ footer p {
   opacity: 1;
   transition: all 0.5s ease-in-out;
 }
-.resto__title::before::after {
+#page-resto .resto__title::before::after {
   display: inline-block;
   position: absolute;
   font-style: normal;
@@ -358,57 +373,68 @@ footer p {
   transition: all 0.5s ease-in-out;
   background-image: linear-gradient(to top, rgb(147, 86, 220), rgb(255, 121, 218));
 }
-.resto__title::before:hover::after {
+#page-resto .resto__title::before:hover::after {
   opacity: 1;
   transform: translateY(-50%) scale(1.1);
 }
-
-.resto-main {
+#page-resto .resto-main {
   padding: 0 1rem;
   background-color: #f6f6f6;
 }
-.resto-main h3 {
+#page-resto .resto-main h3 {
   margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  position: relative;
 }
-
-.menu-grid {
+#page-resto .resto-main h3::after {
+  content: "";
+  position: absolute;
+  top: 1.7rem;
+  left: 0;
+  height: 0.25rem;
+  width: 3rem;
+  background-color: #99e2d0;
+}
+#page-resto .menu-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 @media (max-width: 1024px) {
-  .menu-grid {
+  #page-resto .menu-grid {
     grid-template-columns: 1fr;
   }
 }
-.menu-grid .menu__category {
+#page-resto .menu-grid .menu__category {
   overflow: hidden;
 }
-.menu-grid .menu__category .menu-item {
+#page-resto .menu-grid .menu__category .menu-item {
   display: flex;
   background-color: white;
   border-radius: 1rem;
   overflow: hidden;
   margin: 0.5rem;
   box-shadow: 2px 1px 8px -3px #7e7e7e;
+  animation: appear 3s;
 }
-.menu-grid .menu__category .menu-item .menu-item__price {
+#page-resto .menu-grid .menu__category .menu-item .menu-item__price {
   margin-left: auto;
   padding: 1rem;
   font-weight: 900;
   display: flex;
   align-items: flex-end;
 }
-.menu-grid .menu__category .menu-item .menu-item__description {
+#page-resto .menu-grid .menu__category .menu-item .menu-item__description {
   padding: 1rem;
   overflow: hidden;
 }
-.menu-grid .menu__category .menu-item .menu-item__description h4, .menu-grid .menu__category .menu-item .menu-item__description p {
+#page-resto .menu-grid .menu__category .menu-item .menu-item__description h4, #page-resto .menu-grid .menu__category .menu-item .menu-item__description p {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.menu-grid .menu__category .menu-item .menu-item__check {
+#page-resto .menu-grid .menu__category .menu-item .menu-item__check {
   display: grid;
   flex-shrink: 0;
   place-items: center;
@@ -418,7 +444,7 @@ footer p {
   width: 4rem;
   transition: margin-right 0.5s;
 }
-.menu-grid .menu__category .menu-item .menu-item__check i {
+#page-resto .menu-grid .menu__category .menu-item .menu-item__check i {
   display: grid;
   place-items: center;
   background: white;
@@ -427,10 +453,13 @@ footer p {
   border-radius: 1rem;
   color: #99e2d0;
 }
-.menu-grid .menu__category .menu-item:hover .menu-item__check {
+#page-resto .menu-grid .menu__category .menu-item:hover {
+  cursor: pointer;
+}
+#page-resto .menu-grid .menu__category .menu-item:hover .menu-item__check {
   margin-right: 0;
 }
-.menu-grid .menu__category .menu-item:hover i {
+#page-resto .menu-grid .menu__category .menu-item:hover i {
   animation: quarterspin 0.4s ease-in-out;
 }
 @keyframes quarterspin {
@@ -440,6 +469,28 @@ footer p {
   100% {
     transform: rotate(0);
   }
+}
+#page-resto section.order {
+  height: 25vh;
+  display: grid;
+  place-items: center;
+}
+#page-resto section.order button {
+  color: white;
+  font-weight: 300;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 2rem;
+  transition: transform 200ms;
+  margin-top: 1rem;
+  cursor: pointer;
+  box-shadow: 2px 1px 8px -3px #7e7e7e;
+  background-image: linear-gradient(to top, rgba(147, 86, 220, 0.9), rgba(255, 121, 218, 0.9));
+}
+#page-resto section.order button:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
 }
 
 /*# sourceMappingURL=style.css.map */
