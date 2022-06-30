@@ -68,13 +68,18 @@
   .menu__category {
     overflow: hidden;
     .menu-item {
+      @for $i from 1 through 3 {
+        &:nth-child(#{$i}) {
+          animation-delay: $i * 100ms;
+        }
+      }
+      animation: appear 1s;
       display: flex;
       background-color: white;
       border-radius: 1rem;
       overflow: hidden;
       margin: 0.5rem;
       @include mixins.box-shadow;
-      animation: appear 3s;
       .menu-item__price {
         margin-left: auto;
         padding: 1rem;
