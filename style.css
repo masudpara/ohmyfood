@@ -81,7 +81,7 @@ header {
   inset: 0;
   z-index: 1;
   opacity: 0.9;
-  animation: disappear 200ms 2s forwards;
+  animation: disappear 200ms 9s forwards;
   transform-origin: top;
 }
 .loader::after {
@@ -91,8 +91,8 @@ header {
   border-right: 5px solid transparent;
   border-top: 5px solid #9356dc;
   border-radius: 50%;
-  animation: spin 1s ease-in-out;
-  animation-iteration-count: 2;
+  animation: spin 3s ease-in-out;
+  animation-iteration-count: 3;
 }
 
 @keyframes disappear {
@@ -211,17 +211,12 @@ header {
 #homepage .menus .card__image-4 {
   background-image: url("images/menu-4.jpg");
 }
-#homepage .menus .card__description {
+#homepage .menus .card__desc {
   position: relative;
   background-color: white;
   border-radius: 0 0 1rem 1rem;
 }
-#homepage .menus .card__description::before {
-  position: relative;
-  background-color: white;
-  border-radius: 0 0 1rem 1rem;
-}
-#homepage .menus .card__description::before::before {
+#homepage .menus .card__desc::before {
   display: inline-block;
   position: absolute;
   font-style: normal;
@@ -239,9 +234,9 @@ header {
   background-clip: text;
   -webkit-background-clip: text;
   opacity: 1;
-  transition: all 0.5s ease-in-out;
+  transition: all 400ms ease-in-out;
 }
-#homepage .menus .card__description::before::after {
+#homepage .menus .card__desc::after {
   display: inline-block;
   position: absolute;
   font-style: normal;
@@ -259,14 +254,14 @@ header {
   background-clip: text;
   -webkit-background-clip: text;
   opacity: 0;
-  transition: all 0.5s ease-in-out;
+  transition: all 400ms ease-in-out;
   background-image: linear-gradient(to top, rgb(147, 86, 220), rgb(255, 121, 218));
 }
-#homepage .menus .card__description::before:hover::after {
+#homepage .menus .card__desc:hover::after {
   opacity: 1;
   transform: translateY(-50%) scale(1.1);
 }
-#homepage .menus .card__description h3, #homepage .menus .card__description p {
+#homepage .menus .card h3, #homepage .menus .card p {
   padding: 0.5rem;
 }
 
@@ -308,7 +303,7 @@ footer p {
   top: 50%;
   transform: translateY(-50%);
   font-size: 22px;
-  padding: 1.5rem;
+  padding: 1rem;
 }
 #page-resto .banner img {
   display: block;
@@ -328,11 +323,6 @@ footer p {
   padding: 2rem 1rem;
 }
 #page-resto .resto__title::before {
-  position: relative;
-  background-color: white;
-  border-radius: 0 0 1rem 1rem;
-}
-#page-resto .resto__title::before::before {
   display: inline-block;
   position: absolute;
   font-style: normal;
@@ -350,9 +340,9 @@ footer p {
   background-clip: text;
   -webkit-background-clip: text;
   opacity: 1;
-  transition: all 0.5s ease-in-out;
+  transition: all 400ms ease-in-out;
 }
-#page-resto .resto__title::before::after {
+#page-resto .resto__title::after {
   display: inline-block;
   position: absolute;
   font-style: normal;
@@ -370,10 +360,10 @@ footer p {
   background-clip: text;
   -webkit-background-clip: text;
   opacity: 0;
-  transition: all 0.5s ease-in-out;
+  transition: all 400ms ease-in-out;
   background-image: linear-gradient(to top, rgb(147, 86, 220), rgb(255, 121, 218));
 }
-#page-resto .resto__title::before:hover::after {
+#page-resto .resto__title:hover::after {
   opacity: 1;
   transform: translateY(-50%) scale(1.1);
 }
@@ -451,7 +441,7 @@ footer p {
   background-color: #99e2d0;
   margin-right: -4rem;
   width: 4rem;
-  transition: margin-right 0.5s;
+  transition: margin-right 1s;
 }
 #page-resto .menu-grid .menu__category .menu-item .menu-item__check i {
   display: grid;
@@ -469,7 +459,7 @@ footer p {
   margin-right: 0;
 }
 #page-resto .menu-grid .menu__category .menu-item:hover i {
-  animation: quarterspin 0.4s ease-in-out;
+  animation: quarterspin 1s ease-in-out;
 }
 @keyframes quarterspin {
   0% {
