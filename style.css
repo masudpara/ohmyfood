@@ -265,7 +265,7 @@ header {
   background-image: linear-gradient(to top, rgb(147, 86, 220), rgb(255, 121, 218));
 }
 .menus .menu__like {
-  transition-duration: 0.25s;
+  transition-duration: 1s;
   background-color: #f6f6f6;
   position: absolute;
   top: 0;
