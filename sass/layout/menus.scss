@@ -2,7 +2,6 @@
 @use "../utils/colors";
 @use "../utils/mixins";
 
-#homepage {
 
   .menus {
     background-color: #f6f6f6;
@@ -50,23 +49,82 @@
         }
       }
       &__desc {
+        display: flex;
         position: relative;
         background-color: white;
         border-radius: 0 0 1rem 1rem;
-        &::before {
-          @include mixins.heart;
-        }
-        &::after {
-            @include mixins.heart($opacity: 0, $font-weight: 900, $color: transparent);
-            @include mixins.gradient(1);
-          }
-        &:hover::after {
-            opacity: 1;
-            transform: translateY(-50%) scale(1.1);
-          }
+        padding: 1rem;
+        &__content {
+          flex-direction: column;
+          flex:1;
         }
         h3,p {
-          padding: 0.5rem;
+          padding: 0 0 0.25rem;
+        }
+      }
+      &__btn {
+        height: 2rem;
+        width: 2rem;
+        background-color: transparent;
+        border: transparent 0px solid;
+        padding: 0;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      }
+    
+      &__like {
+        background-color: white!important;
+      }
+    }
+    .menu {
+      &__btn {
+        height: 2rem;
+        width: 2rem;
+        padding: 0;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        cursor: pointer;
+        position: relative;
+        background-color: black;
+        
+        &:hover::before {
+          opacity: 1;
+        }
+        
+        &::before {
+          opacity: 0;
+          transition: 0.5s;
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          @include mixins.gradient(1);
+        }
+      }
+    
+      &__like {
+        transition-duration: .25s;
+        background-color: #f6f6f6;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        mix-blend-mode: lighten;
+      }
+    
+      &__btn:hover {
+        .menu__like {
+          &--noBg {
+            opacity: 0;
+          }
         }
       }
     }

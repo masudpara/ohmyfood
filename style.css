@@ -81,7 +81,7 @@ header {
   inset: 0;
   z-index: 1;
   opacity: 0.9;
-  animation: disappear 200ms 9s forwards;
+  animation: disappear 200ms 4s forwards;
   transform-origin: top;
 }
 .loader::after {
@@ -91,8 +91,8 @@ header {
   border-right: 5px solid transparent;
   border-top: 5px solid #9356dc;
   border-radius: 50%;
-  animation: spin 3s ease-in-out;
-  animation-iteration-count: 3;
+  animation: spin 2s ease-in-out;
+  animation-iteration-count: 2;
 }
 
 @keyframes disappear {
@@ -150,6 +150,7 @@ header {
 .tuto li:hover {
   transform: scale(1.02);
   background-color: #f2eafb;
+  cursor: pointer;
 }
 .tuto li:hover i::before {
   color: #9356dc;
@@ -160,13 +161,13 @@ header {
   font-size: 1.5rem;
 }
 
-#homepage .menus {
+.menus {
   background-color: #f6f6f6;
 }
-#homepage .menus h2 {
+.menus h2 {
   padding: 2rem 1rem;
 }
-#homepage .menus .menus__cards {
+.menus .menus__cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
@@ -174,14 +175,14 @@ header {
   padding-bottom: 3rem;
 }
 @media (max-width: 1024px) {
-  #homepage .menus .menus__cards {
+  .menus .menus__cards {
     grid-template-columns: repeat(1, 1fr);
   }
 }
-#homepage .menus .menus__cards .new {
+.menus .menus__cards .new {
   position: relative;
 }
-#homepage .menus .menus__cards .new::before {
+.menus .menus__cards .new::before {
   content: "Nouveau";
   position: absolute;
   height: 2rem;
@@ -193,76 +194,91 @@ header {
   right: 1rem;
   top: 1rem;
 }
-#homepage .menus .card__image {
+.menus .card__image {
   height: 15rem;
   border-radius: 1rem 1rem 0 0;
   background-size: cover;
   background-position: center;
 }
-#homepage .menus .card__image-1 {
+.menus .card__image-1 {
   background-image: url("images/menu-1.jpg");
 }
-#homepage .menus .card__image-2 {
+.menus .card__image-2 {
   background-image: url("images/menu-2.jpg");
 }
-#homepage .menus .card__image-3 {
+.menus .card__image-3 {
   background-image: url("images/menu-3.jpg");
 }
-#homepage .menus .card__image-4 {
+.menus .card__image-4 {
   background-image: url("images/menu-4.jpg");
 }
-#homepage .menus .card__desc {
+.menus .card__desc {
+  display: flex;
   position: relative;
   background-color: white;
   border-radius: 0 0 1rem 1rem;
+  padding: 1rem;
 }
-#homepage .menus .card__desc::before {
-  display: inline-block;
-  position: absolute;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 400;
-  content: "\f004";
-  font-size: 2rem;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: inherit;
-  background-clip: text;
-  -webkit-background-clip: text;
+.menus .card__desc__content {
+  flex-direction: column;
+  flex: 1;
+}
+.menus .card__desc h3, .menus .card__desc p {
+  padding: 0 0 0.25rem;
+}
+.menus .card__btn {
+  height: 2rem;
+  width: 2rem;
+  background-color: transparent;
+  border: transparent 0px solid;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menus .card__like {
+  background-color: white !important;
+}
+.menus .menu__btn {
+  height: 2rem;
+  width: 2rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  background-color: black;
+}
+.menus .menu__btn:hover::before {
   opacity: 1;
-  transition: all 400ms ease-in-out;
 }
-#homepage .menus .card__desc::after {
-  display: inline-block;
-  position: absolute;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: "\f004";
-  font-size: 2rem;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
+.menus .menu__btn::before {
   opacity: 0;
-  transition: all 400ms ease-in-out;
+  transition: 0.5s;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
   background-image: linear-gradient(to top, rgb(147, 86, 220), rgb(255, 121, 218));
 }
-#homepage .menus .card__desc:hover::after {
-  opacity: 1;
-  transform: translateY(-50%) scale(1.1);
+.menus .menu__like {
+  transition-duration: 0.25s;
+  background-color: #f6f6f6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mix-blend-mode: lighten;
 }
-#homepage .menus .card h3, #homepage .menus .card p {
-  padding: 0.5rem;
+.menus .menu__btn:hover .menu__like--noBg {
+  opacity: 0;
 }
 
 footer {
@@ -304,6 +320,11 @@ footer p {
   transform: translateY(-50%);
   font-size: 22px;
   padding: 1rem;
+}
+@media (max-width: 480px) {
+  #page-resto header::before {
+    left: 0rem;
+  }
 }
 #page-resto .banner img {
   display: block;
@@ -400,7 +421,7 @@ footer p {
   overflow: hidden;
 }
 #page-resto .menu-grid .menu__category .menu-item {
-  animation: appear 1s;
+  animation: appear 2s;
   display: flex;
   background-color: white;
   border-radius: 1rem;

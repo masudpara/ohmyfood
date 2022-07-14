@@ -13,6 +13,9 @@
     transform: translateY(-50%);
     font-size: 22px;
     padding: 1rem;
+    @media (max-width: 480px) {
+      left: 0rem;
+    }
   }
 
   .banner img {
@@ -81,7 +84,7 @@
           animation-delay: $i * 100ms;
         }
       }
-      animation: appear 1s;
+      animation: appear 2s;
       display: flex;
       background-color: white;
       border-radius: 1rem;
