@@ -72,7 +72,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  @media (max-width: variables.$breakpoint) {
+  @media (max-width: variables.$breakpoint-tablet) {
     grid-template-columns: 1fr;
   }
   
